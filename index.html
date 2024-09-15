@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.1/dist/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("j4M0jOfi7LwARPoMW");
+        })();
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#section1" class="nav-link">Home</a></li>
+            <li><a href="#section2" class="nav-link">About Us</a></li>
+            <li><a href="#section3" class="nav-link">Skills</a></li>
+            <li><a href="#section4" class="nav-link">Projects</a></li>
+            <li><a href="#section5" class="nav-link">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div id="section1" class="section">
+        <div id="s1-about">
+            <h3>Mastering Skills at Front End Development</h3>
+            <h1>HI, I'M<span> RAJKUMAR</span></h1>
+            <a class="cv" href="Resume2.docx">Download CV</a>
+        </div>
+    </div>
+    <div id="section2" class="section">
+        <div id="aboutme">
+            <p>
+                I'm a college student passionate about web development, with a focus on creating clean, user-friendly designs. I have hands-on experience with HTML, CSS, JavaScript, and enjoy working on projects that challenge my skills and creativity.<br>
+                <br>
+                This portfolio showcases some of my key projects, each reflecting my dedication to learning and growing in the tech field. Beyond coding, I draw inspiration from [mention hobbies or interests] to fuel my creativity.<br>
+                <br>
+                Thanks for visiting—I'm excited to share my work with you!
+            </p>
+        </div>
+        <div id="aboutmes2">
+            <h1 id="h1abt"> ABOUT<br>
+            MYSELF</h1>
+        </div>
+    </div>
+    <div id="section3" class="section">
+        <h1>MY<span> SKILLS</span></h1>
+        <div class="skillimg">
+            <img src="/html.png">
+            <img src="/css.png">
+            <img src="/js.png">
+            <img src="/react.png">
+        </div>
+        <h1>TOOLS</h1>
+        <div class="toolimg">
+            <img id="vsdimg" src="/vsd.png" alt="">
+            <img src="/github.png" alt="">
+        </div>
+    </div>
+    <div id="section4" class="section">
+        <h1>MY <span>RECENT PROJECTS</span></h1>
+        <div id="projectsec">
+            <div class="project">
+                <img src="/ecommercewebsite.png">
+                <h3>E-Commerce Website</h3>
+                <p>Created a Responsive E-Commerce Website Developed with<br>
+                    HTML, CSS, and JS</p>
+                <a href="https://strong-tapioca-3ebbc9.netlify.app/html/">Check Live Site</a>
+            </div>
+
+            <div class="project">
+                <img src="/GPA CAL SS.png">
+                <h3>GPA Calculator Website</h3>
+                <p>Created a Responsive React.js application using HTML, CSS, and JavaScript to calculate GPA from grades and credits</p>
+                <a href="https://mellow-brigadeiros-1a6f0d.netlify.app/">Check Live Site</a>
+            </div>
+        </div>
+        <button  onclick="ShowMore()">Show More</button>
+    </div>
+    <div id="section5" class="section">
+        <section class="contact">
+            <div class="cnttxt-mobile">
+                <h1>CONTACT US</h1>
+            </div>
+            <form id="contact-form">
+                <div class="input-box">
+                    <div class="input-field field">
+                    <input type="text" name="user_name" placeholder="Full Name" class="item" autocomplete="off" required>
+                    </div>
+
+                    <div class="input-field field">
+                    <input type="email" name="user_email" placeholder="Email Address" class="item" autocomplete="off" required>
+                    </div>
+
+                    <div class="input-field field">
+                    <input type="text" name="phone_number" placeholder="Phone Number" class="item" autocomplete="off" required>
+                    </div>
+
+                    <div class="input-field field">
+                    <input type="text" name="subject" placeholder="Subject" class="item" autocomplete="off" required>
+                    </div>
+                </div>
+            
+                <div class="textarea-field field">
+                    <textarea name="message" cols="30" rows="10" placeholder="Your Message" autocomplete="off" class="txtarea" required></textarea>
+                </div>
+            
+                <button type="submit" class="button">Send Message</button>
+            </form>
+            <div class="cnttxt">
+                <h1 class="h1txt">CONTACT US</h1>
+                <div class="socials">
+                    <ul>
+                        <li><span>LinkedIn : </span>https://shorturl.at/j9Syf</li>
+                        <li><span>Phone No : </span>+91 9150745606</li>
+                        <li><span>Email Id : </span>rajkumarok6727@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault(); 
+
+                var name = document.querySelector('input[name="user_name"]').value.trim();
+                var email = document.querySelector('input[name="user_email"]').value.trim();
+                var phone = document.querySelector('input[name="phone_number"]').value.trim();
+                var subject = document.querySelector('input[name="subject"]').value.trim();
+                var message = document.querySelector('textarea[name="message"]').value.trim();
+
+                if (!name || !email || !phone || !subject || !message) {
+                    alert("Please fill out all fields before sending the message.");
+                    return; 
+                }
+
+                emailjs.sendForm('service_6z8i1rl', 'template_qhi196b', this)
+                    .then((response) => {
+                        console.log('SUCCESS!', response.status, response.text);
+                        alert("Message sent successfully!");
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                        alert("Failed to send message. Please try again later.");
+                    });
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            VanillaTilt.init(document.querySelectorAll('.project'), {
+                max: 25, 
+                speed: 400, 
+                scale: 1.05, 
+                glare: true, 
+                "max-glare": 0.5 
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            VanillaTilt.init(document.querySelectorAll('.h1txt'), {
+                max: 25, 
+                speed: 400, 
+                scale: 1.05, 
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            VanillaTilt.init(document.querySelectorAll('.skillimg'), {
+                max: 25, 
+                speed: 400, 
+                scale: 1.05, 
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            VanillaTilt.init(document.querySelectorAll('.toolimg'), {
+                max: 25, 
+                speed: 400, 
+                scale: 1.05, 
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function(){
+            ScrollReveal({
+                reveal:true,
+                distance:'80px',
+                duration:2000,
+                delay:200,
+                reset: true,
+            });
+        })
+        ScrollReveal().reveal('.contact',{origin:'top'});
+    </script>
+    
+    
+</body>
+</html>
